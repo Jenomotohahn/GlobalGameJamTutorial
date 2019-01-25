@@ -1,0 +1,134 @@
+body {
+    background: #000;
+  
+  }
+  h1{
+    margin: 10px;
+    font-size: 30px;
+    background-color: cornflowerblue;
+    padding-left: 200px;
+    padding-right: 200px;
+    color: white;
+  }
+  canvas {
+    background-color: black;
+    display: block;
+    border: solid 5px #444;
+  }
+  
+  #drivefast-canvas {
+    background-color: lightgreen;
+    display: block;
+    border: solid 5px #444;
+  }
+  #info {
+    display: none;
+  }
+  
+  
+  #button-container{
+    display: flex;
+    justify-content: center;
+  }
+  button{
+    margin: 20px;
+    width: 200px;
+    height: 100px;
+    background-color: blue;
+    border: hidden;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  #wrapper{
+    display: flex;
+  
+  }
+  
+  .flash{
+    background-color: red;
+    max-height: 100px;
+    margin-right: 20px;
+    margin-left: 0px;
+    font-size: 40px;
+    text-align: center;
+    padding:10px;
+    color: white;
+    margin-top: 5px;
+  }
+  
+  #games {
+    animation: games 2s infinite;
+  }
+  
+  #tacos {
+    animation: tacos 2s infinite;
+  }
+  
+  #lover {
+    animation: lover 2s infinite;
+  }
+  
+  @keyframes games{
+    0%{
+      background-color: yellow;
+    }
+    100%{
+      background-color: red;
+    }
+  }
+  
+  @keyframes tacos{
+    0%{
+      background-color: blue;
+    }
+    100%{
+      background-color: orange;
+    }
+  }
+  
+  @keyframes lover{
+    25%{
+      background-color: pink;
+    }
+    100%{
+      background-color: salmon;
+    }
+  }
+  
+  #free {
+    animation: free 2s infinite;
+  }
+  
+  @keyframes free{
+    0%{
+      background-color: green;
+    }
+    100%{
+      background-color: white;
+    }
+  }
+  
+  #secret {
+    animation: secret 2s infinite;
+  }
+  
+  @keyframes secret{
+    0%{
+      background-color: orange;
+    }
+    100%{
+      background-color: purple;
+    }
+  }
+  
+  #difficiluty{
+    margin-left: 100px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 0px;
+    border: 2px solid red;
+    background-color: white;
+    color: black;
+  }
