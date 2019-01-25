@@ -6,7 +6,7 @@ let ctxH = canvas.height;
 let elPX = document.getElementById("playerX");
 let elPY = document.getElementById("playerY");
 
-let img = new Image(); // car-image
+let img = new Image();
 img.src = "car.png";
 
 let track = new Image();
@@ -27,26 +27,33 @@ let backSpeed = 4;
 const drawRotatedImage = (image, x, y, angle) => {
   // save the current co-ordinate system
   ctx.save();
-  // translate positions
+  // translate
   ctx.translate(x, y);
+
   // rotate around the point
-  // converting angle from degrees to radians
+  // converting angle for degrees to radians
   ctx.rotate(angle * TO_RADIANS);
 
-  // draw image with our specified coords.
-
+  // draw image with our specified coords.addEventListener('
   ctx.drawImage(image, -(image.width / 2), -(image.height / 2));
 
-  // and then restore the coords. to how they were when we began our journey together down this road.
-
+  // and then restore the coords, to how they were when we began our journey together down this road.
   ctx.restore();
 };
 
 const draw = () => {
+  // canvas works like this
+  // clear first
+  // then re-draw it
+
   ctx.clearRect(0, 0, ctxW, ctxH);
   ctx.drawImage(track, 0, 0);
   drawRotatedImage(img, carX, carY, rotation);
 };
+
+// window.addEventListener('keydown', (e)=>{
+//   console.log(e.keyCode);
+// });
 
 let key = {
   UP: 38,
@@ -62,18 +69,10 @@ let keys = {
   39: false
 };
 
-const steerLeft = () => {
-  rotation -= rotationStep * (speed / maxSpeed);
-};
-
-const steerRight = () => {
-  rotation += rotationStep * (speed / maxSpeed);
-};
-
 const speedXY = (rotation, speed) => {
   return {
     x: Math.sin(rotation * TO_RADIANS) * speed,
-    y: Math.cos(rotation * TO_RADIANS) * speed * -1
+    x: Math.cos(rotation * TO_RADIANS) * speed * -1
   };
 };
 
@@ -86,40 +85,35 @@ const step = () => {
     speed -= 0.2;
   }
   if (keys[key.LEFT]) {
-    steerLeft();
+    console.log("go left");
   }
   if (keys[key.RIGHT]) {
-    steerRight();
+    console.log("go right");
   }
 
   let speedAxis = speedXY(rotation, speed);
   carX += speedAxis.x;
   carY += speedAxis.y;
 
-  // update player coords with innerhtml for elPX & elPY
+  // update player coords with innerhtml for elPX & el PY
   elPX.innerHTML = Math.floor(carX);
   elPY.innerHTML = Math.floor(carY);
 };
 
-// in this space:
 window.addEventListener("keydown", e => {
   if (keys[e.keyCode] !== "undefined") {
     keys[e.keyCode] = true;
   }
 });
-
 window.addEventListener("keyup", e => {
   if (keys[e.keyCode] !== "undefined") {
     keys[e.keyCode] = false;
   }
 });
 
-// in this space:
-
 const frame = () => {
   step();
   draw();
-
   window.requestAnimationFrame(frame);
 };
 
